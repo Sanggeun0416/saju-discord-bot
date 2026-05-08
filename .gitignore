@@ -1,0 +1,25 @@
+# 환경변수 (디스코드 웹훅 URL 포함 - 절대 커밋 금지)
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# 로그
+fortune.log
+*.log
+
+# 가상환경
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code 로컬 설정
+.claude/
