@@ -1,0 +1,8 @@
+users:
+  - name: 이상근
+    year: 2005
+    month: 4
+    day: 16
+    hour: 2
+    minute: 39
+    is_male: true
