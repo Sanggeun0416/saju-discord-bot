@@ -8,7 +8,9 @@
 
 import logging
 import sxtwl
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
+_KST = timezone(timedelta(hours=9))
 
 logger = logging.getLogger(__name__)
 
@@ -326,7 +328,7 @@ class SajuAnalyzer:
     # ── 공개: 운세 분석 ──────────────────────────────────────────────────────
 
     def analyze_today(self) -> dict:
-        today = datetime.now()
+        today = datetime.now(_KST)
         return self.analyze_date(today.year, today.month, today.day)
 
     def analyze_date(self, year: int, month: int, day: int) -> dict:

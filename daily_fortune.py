@@ -11,7 +11,9 @@ import json
 import logging
 import traceback
 import requests
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+
+KST = timezone(timedelta(hours=9))
 from dotenv import load_dotenv
 
 # Windows 터미널 UTF-8 강제 설정
@@ -76,7 +78,7 @@ def send_error_to_discord(error_msg: str):
         return
     payload = {
         "username": "사주 운세봇",
-        "content": f"⚠️ **운세 전송 실패** ({datetime.now().strftime('%Y-%m-%d %H:%M')})\n```\n{error_msg[:1800]}\n```",
+        "content": f"⚠️ **운세 전송 실패** ({datetime.now(KST).strftime('%Y-%m-%d %H:%M')})\n```\n{error_msg[:1800]}\n```",
     }
     try:
         requests.post(
@@ -96,7 +98,7 @@ def _star(n: int) -> str:
 
 
 def build_discord_embed(fortune: dict, user_name: str) -> dict:
-    today     = datetime.now()
+    today     = datetime.now(KST)
     date_str  = today.strftime("%Y년 %m월 %d일 (%a)")
     score     = fortune["overall_score"]
 
